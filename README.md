@@ -4,7 +4,7 @@
 **Meal Mentor** is an intelligent recipe recommendation system designed to help users discover healthy and nutritious meals tailored to their dietary preferences and nutritional goals. By leveraging advanced technologies such as Retrieval-Augmented Generation (RAG) and Large Language Models (LLMs) from OpenAI, Meal Mentor provides personalized recipe suggestions based on diet types and specific nutritional values.
 
 <p align="center">
-  <img src="images/meal_mentor_logo.png" width="200">
+  <img src="images/meal_mentor_logo.png" width="600">
 </p>
 
 ## Table of Contents
