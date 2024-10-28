@@ -1,4 +1,3 @@
-
 # Meal Mentor 🍽️
 
 **Meal Mentor** is an intelligent recipe recommendation system designed to help users discover healthy and nutritious meals tailored to their dietary preferences and nutritional goals. By leveraging advanced technologies such as Retrieval-Augmented Generation (RAG) and Large Language Models (LLMs) from OpenAI, Meal Mentor provides personalized recipe suggestions based on diet types and specific nutritional values.
@@ -21,6 +20,7 @@
   - [Retrieval Evaluation](#retrieval-evaluation)
   - [RAG Evaluation](#rag-evaluation)
 - [Monitoring and Feedback](#monitoring-and-feedback)
+  - [Grafana Dashboard](#grafana-dashboard)
 - [Ingestion Pipeline](#ingestion-pipeline)
 - [Interface](#interface)
 - [Containerization](#containerization)
@@ -50,7 +50,7 @@ Meal Mentor is an end-to-end application that combines a knowledge base of recip
 
 - **Retrieval-Augmented Generation (RAG)**: Integrates information retrieval and natural language generation to produce relevant and context-aware responses.
 - **OpenAI API**: Utilizes LLMs to interpret user queries and generate personalized recommendations.
-- **Elasticsearch**: Implements advanced search functionalities to efficiently retrieve relevant recipes from the knowledge base.
+- **Minsearch**: Implements advanced search functionalities to efficiently retrieve relevant recipes from the knowledge base.
 - **FastAPI**: Serves as the backend framework to manage API endpoints and handle user requests.
 - **JavaScript and HTML Frontend**: Provides an intuitive and responsive user interface.
 - **PostgreSQL**: Stores structured data, including recipes, user preferences, and feedback.
@@ -59,23 +59,20 @@ Meal Mentor is an end-to-end application that combines a knowledge base of recip
 ## Features
 
 1. **Personalized Recipe Recommendations**: Suggests recipes based on diet type (e.g., keto, vegan, Mediterranean) and specific nutritional values.
-2. **Nutritional Filtering**: Allows users to set macronutrient ranges (e.g., minimum protein, maximum carbs).
-3. **Ingredient Inclusion/Exclusion**: Users can specify ingredients to include or exclude in their recommendations.
-4. **User Feedback Collection**: Enables users to provide feedback on recommendations to improve the system.
-5. **Real-Time Monitoring**: Tracks user interactions and system performance through Grafana dashboards.
-6. **Conversational Interface**: Supports natural language queries for an enhanced user experience.
+2. **User Feedback Collection**: Enables users to provide feedback on recommendations to improve the system.
+3. **Real-Time Monitoring**: Tracks user interactions and system performance through Grafana dashboards.
+4. **Conversational Interface**: Supports natural language queries for an enhanced user experience.
 
 ## Technologies Used
 
+- **Python 3.11**: Programming language used for backend development.
 - **FastAPI**: High-performance web framework for building APIs with Python 3.11.
 - **OpenAI API**: Accesses advanced LLMs for natural language understanding and generation.
-- **Elasticsearch**: Provides robust full-text search and analytics engine for efficient data retrieval.
+- **Minsearch**: Provides robust full-text search.
 - **PostgreSQL**: Relational database system for storing structured data.
 - **Grafana**: Open-source platform for monitoring and observability.
 - **JavaScript and HTML**: Frontend technologies for building a responsive user interface.
 - **Docker and Docker Compose**: Containerization tools for deploying and managing application services.
-- **Prometheus**: Monitoring system and time-series database (if used).
-- **Python Libraries**: Including `pandas`, `requests`, `asyncio`, `uvicorn`, `sqlalchemy`, `elasticsearch-py`, etc.
 
 ## System Architecture
 
@@ -83,14 +80,10 @@ The Meal Mentor application consists of the following components:
 
 - **Frontend**: A JavaScript and HTML-based user interface that allows users to input their dietary preferences and view recipe recommendations.
 - **Backend (FastAPI)**: Handles API requests from the frontend, processes user queries, and communicates with other services.
-- **Knowledge Base (Elasticsearch)**: Stores and indexes the recipe data, allowing for efficient search and retrieval.
+- **Knowledge Base (Minsearch)**: Indexes the recipe data, allowing for efficient search and retrieval.
 - **Database (PostgreSQL)**: Stores user data, feedback, and monitoring logs.
 - **LLM Integration (OpenAI API)**: Processes user queries using LLMs to understand intent and generate personalized responses.
 - **Monitoring (Grafana)**: Collects and visualizes metrics on system performance and user interactions.
-
-### Architecture Diagram
-
-*(Insert a system architecture diagram here, if available)*
 
 ## Setup and Installation
 
@@ -247,19 +240,63 @@ Meal Mentor collects user feedback and monitors system performance to continuous
 
 ### Grafana Dashboard
 
-The Grafana dashboard displays:
+The Grafana dashboard provides comprehensive insights into the application's performance, user interactions, and resource utilization. Each panel on the dashboard offers specific metrics that help in monitoring and optimizing the system.
 
-- **User Interactions**: Number of queries, feedback submissions, and active users.
-- **System Performance**: API response times, error rates, and resource utilization.
-- **Feedback Analysis**: User satisfaction rates and common issues reported.
+**Dashboard Panels and Descriptions:**
 
-**Dashboard Metrics Include:**
+1. **Question / Answer**
+   - **Type**: Table
+   - **Description**: Displays the most recent questions and answers from user conversations. This panel shows the conversation text ordered by timestamp to keep track of user interactions and responses over time.
 
-1. **Total Queries**: Tracks the number of recipe recommendation requests.
-2. **Average Response Time**: Monitors the performance of the API.
-3. **User Feedback Scores**: Visualizes satisfaction ratings over time.
-4. **Error Rates**: Identifies any issues in the system for prompt resolution.
-5. **Popular Diet Types**: Shows which diet types are most requested by users.
+2. **Most Frequent Keywords in Questions**
+   - **Type**: Table
+   - **Description**: Shows the most common keywords used in user questions, excluding non-alphanumeric characters. This helps in identifying trending topics and frequently asked questions based on the vocabulary used.
+
+3. **Average Response Time Over Time By Day**
+   - **Type**: Time Series
+   - **Description**: Plots the average response time of conversations over each day. It helps monitor response efficiency and identify any spikes in response time that might need addressing.
+
+4. **Relevance Ratings Over Time By Hour**
+   - **Type**: Bar Chart
+   - **Description**: Visualizes the average relevance score of responses each hour, categorizing responses into 'RELEVANT', 'PARTLY_RELEVANT', and 'NON_RELEVANT.' This chart offers insight into the relevance and quality of responses at different times.
+
+5. **Average Response Time Last 10 Requests**
+   - **Type**: Gauge
+   - **Description**: Shows the average response time of the last 10 requests, providing a quick snapshot of recent response efficiency.
+
+6. **Feedback Ratings Distribution**
+   - **Type**: Bar Chart
+   - **Description**: Displays the distribution of feedback ratings categorized into Positive, Neutral, and Negative. This helps gauge overall user satisfaction and experience trends.
+
+7. **Feedback Submission Over Time**
+   - **Type**: Bar Chart
+   - **Description**: Illustrates the count of feedback submissions over time, providing insight into the frequency and volume of user feedback.
+
+8. **Retrieved Document Relevancy Share**
+   - **Type**: Pie Chart
+   - **Description**: Breaks down retrieved document relevancy into shares of RELEVANT, PARTLY_RELEVANT, and NON_RELEVANT categories, offering a visual summary of document relevance.
+
+9. **Model Usage Distribution**
+   - **Type**: Pie Chart
+   - **Description**: Summarizes the usage count for each language model used in conversations, helping assess which models are most frequently utilized.
+
+10. **Total OpenAI Cost Over Time By Day**
+    - **Type**: Table
+    - **Description**: Shows the total OpenAI costs accrued daily, helping track and manage API usage costs associated with conversation processing.
+
+11. **Average Tokens Used Per Conversation**
+    - **Type**: Table
+    - **Description**: Displays the average token count per conversation by day, helping monitor the length and complexity of interactions and their impact on costs.
+
+12. **Conversations Over Time By Date**
+    - **Type**: Table
+    - **Description**: Provides a daily count of conversations, allowing for the tracking of user engagement over time.
+
+13. **Correlation Between Feedback and Response Time**
+    - **Type**: Table
+    - **Description**: Compares feedback scores with response times, helping analyze the impact of response efficiency on user satisfaction.
+
+This dashboard provides essential metrics for monitoring the performance, quality, and cost-efficiency of the Meal Mentor application, with the aim of optimizing user engagement and experience.
 
 ### Feedback Mechanism
 
