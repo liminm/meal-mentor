@@ -5,6 +5,10 @@
   <img src="images/meal_mentor_logo.png" width="600">
 </p>
 
+## Quick Application Demo
+![Demo](images/demo.gif)
+
+
 ## Table of Contents
 
 - [Introduction](#introduction)
@@ -31,7 +35,15 @@
 
 ## Introduction
 
-Maintaining a healthy diet can be challenging due to the overwhelming number of recipes and dietary information available. **Meal Mentor** simplifies this process by providing personalized recipe recommendations based on users' dietary requirements and nutritional goals.
+In today's fast-paced world, maintaining a healthy diet can be challenging. With an overwhelming number of recipes and dietary information available, finding meals that meet individual nutritional needs and preferences is time-consuming and often frustrating. Meal Mentor aims to simplify this process by providing personalized recipe recommendations based on users' dietary requirements and nutritional goals.
+
+## Problem Description
+
+Many individuals struggle to plan meals that align with their dietary preferences, nutritional goals, and health requirements. Whether someone is following a specific diet like keto, vegan, or Mediterranean, or trying to manage macronutrient intake (e.g., high protein, low carb), finding suitable recipes can be a daunting task.
+
+Existing recipe platforms often lack the ability to provide personalized recommendations that consider both dietary restrictions and specific nutritional values. Users are left to manually sift through countless recipes, which is inefficient and discouraging.
+
+**Meal Mentor** addresses this problem by leveraging advanced technologies to deliver tailored recipe suggestions, enhancing the user experience and promoting healthier eating habits.
 
 ## Project Overview
 
@@ -54,14 +66,14 @@ Meal Mentor is an end-to-end application that combines a knowledge base of recip
 
 ## Technologies Used
 
-- **Python 3.11**
-- **FastAPI**
-- **OpenAI API**
-- **Minsearch**
-- **PostgreSQL**
-- **Grafana**
-- **JavaScript and HTML**
-- **Docker and Docker Compose**
+- **Python 3.11**: Programming language used for backend development.
+- **FastAPI**: High-performance web framework for building APIs with Python 3.11.
+- **OpenAI API**: Accesses advanced LLMs for natural language understanding and generation.
+- **Minsearch**: Indexes the recipe data, allowing for efficient search and retrieval.
+- **PostgreSQL**: Relational database system for storing structured data.
+- **Grafana**: Open-source platform for monitoring and observability.
+- **JavaScript and HTML**: Frontend technologies for building a responsive user interface.
+- **Docker and Docker Compose**: Containerization tools for deploying and managing application services.
 
 ## System Architecture
 
@@ -74,6 +86,25 @@ The Meal Mentor application consists of:
 - **LLM Integration (OpenAI API)**: Processes queries to generate personalized responses.
 - **Monitoring (Grafana)**: Visualizes system performance and user interactions.
 
+### Dataset: Healthy Diet Recipes
+
+This project utilizes the [Healthy Diet Recipes](https://www.kaggle.com/datasets/thedevastator/healthy-diet-recipes-a-comprehensive-dataset) dataset from Kaggle, offering a wide range of recipes tailored for various diets and cuisines, with a focus on healthy, nutritious meal options. The original dataset included information on extraction day and time, which has been removed for this use case as it was not essential. The data has also been cleaned to remove duplicates, resulting in a streamlined version optimized for efficient use with language models.
+
+#### Dataset Details:
+- **Total Entries**: 7,805 unique recipes.
+- **Subset for Application**: To reduce LLM calls and simplify usage, a random sample of 200 recipes was selected from the full dataset.
+  
+#### Columns:
+- **Diet_type**: Specifies the type of diet each recipe supports (e.g., vegan, keto).
+- **Recipe_name**: The name or title of the recipe.
+- **Cuisine_type**: Indicates the cuisine the recipe is associated with (e.g., Mediterranean, Indian).
+- **Protein(g)**: The amount of protein per recipe in grams.
+- **Carbs(g)**: The amount of carbohydrates per recipe in grams.
+- **Fat(g)**: The amount of fat per recipe in grams.
+
+This refined dataset supports designing diet-specific meal plans, examining nutrient distributions, and exploring healthy recipes across various dietary preferences and cuisines.
+
+You can find the dataset under `data/data.csv`.
 ## Setup and Installation
 
 ### Prerequisites
@@ -89,24 +120,36 @@ The Meal Mentor application consists of:
 1. **Clone the Repository**
 
    ```bash
-   git clone https://github.com/yourusername/meal-mentor.git
+   git clone https://github.com/liminm/meal-mentor.git
    cd meal-mentor
    ```
 
+2. **Copy the Template:**
+   - Duplicate the `.env.template` file and rename the copy to `.env`.
+
+     ```bash
+     cp .env.template .env
+     ```
+
 2. **Set Up Environment Variables**
 
-   Create a `.env` file in the project root directory:
+   Create a `.env` file in the project root directory by copying the provided `.env.template`:
 
-   ```env
-   OPENAI_API_KEY=your_openai_api_key
-   ELASTICSEARCH_HOST=elasticsearch
-   ELASTICSEARCH_PORT=9200
-   POSTGRES_USER=your_postgres_user
-   POSTGRES_PASSWORD=your_postgres_password
-   POSTGRES_DB=meal_mentor_db
+   ```bash
+   cp .env.template .env
    ```
 
-3. **Install Python Dependencies**
+   Open the `.env` file in your preferred text editor and replace the placeholder values with your actual configuration details:
+It is only required to set the `OPENAI_API_KEY` in the `.env` file. The other variables are optional and the current presets are application defaults.
+   ```env
+   **Note:** Ensure that your `.env` file is not committed to version control by adding it to your `.gitignore` file:
+
+   ```gitignore
+   # .gitignore
+   .env
+   ```
+
+4. **Install Python Dependencies**
 
    Create and activate a virtual environment:
 
@@ -196,6 +239,8 @@ Two RAG approaches were tested to optimize the integration between the knowledge
 | RELEVANT        | 95    | 0.475      |
 | PARTLY_RELEVANT | 76    | 0.380      |
 | NON_RELEVANT    | 29    | 0.145      |
+
+The notebook for this evaluation is located at `notebooks/rag_evaluation.ipynb`, and the ground truth data used can be found in `data/ground-truth-retrieval_4o_mini.csv`.
 
 **Insight**: Based on these results, **gpt-4o-mini** was chosen due to its higher proportion of fully relevant responses.
 
