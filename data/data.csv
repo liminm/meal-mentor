@@ -1,0 +1,201 @@
+id,diet_type,recipe_name,cuisine_type,protein(g),carbs(g),fat(g)
+0,dash,Potato Latkes Made Simple: A Twitter Recipe,kosher,31.55,110.84,118.28
+1,dash,Avocado Dressing,american,4.18,18.97,118.42
+2,dash,Bread Salad,american,44.09,153.84,86.03
+3,dash,Ultimat Sparkler,world,0.32,16.32,0.08
+4,dash,Yogurt Pops,american,9.07,34.05,7.9
+5,dash,Sumac-Spiced Eggplant Schnitzel Recipe,central europe,58.84,252.2,195.33
+6,dash,Kerouac Cocktail,american,0.18,8.32,0.1
+7,dash,Miso and Corn Soup,japanese,102.07,176.96,79.36
+8,dash,Red Hot Apple Pie in a Mug,french,6.73,121.93,42.92
+9,dash,Chocolate Cupcakes with Vanilla Cream Cheese Frosting,american,49.88,577.51,142.08
+10,dash,Italian Tomato Tart,italian,70.67,300.07,63.38
+11,dash,Vegetarian Green Chile Recipe,mexican,9.34,52.88,2.28
+12,dash,Hasselback Eggplant Parmesan,american,139.61,159.23,148.51
+13,dash,"Polenta With Winter Salad, Poached Egg, and Blue Cheese From 'Feast'",american,62.66,135.6,128.75
+14,dash,Sauteed fiddlehead ferns,french,25.99,32.7,29.31
+15,dash,Skillet-Roasted Citrus Salmon with Grilled Vegetables,nordic,123.83,75.03,104.1
+16,dash,Little Neck Clams with Sungold Tomatoes,south american,79.37,169.99,58.91
+17,dash,Gazpacho,mediterranean,17.5,101.58,58.73
+18,dash,Steak Fajitas with Avocado Lime Crema,mexican,1.85,8.83,1.8
+19,dash,Vegetarian Beyond Meat Juicy Lucy Burger,american,85.94,34.23,43.45
+20,dash,French Toast ‘n’ Cheese Sandwich,french,15.51,60.45,29.26
+21,dash,Bourbon Maple Cider Recipe,world,2.11,54.23,0.03
+22,dash,Cheesy Bruschetta Chicken,italian,276.85,23.72,201.23
+23,dash,Black River Pearl,world,0.08,14.18,0.08
+24,dash,Rum Swizzle,british,0.85,51.98,0.16
+25,dash,Fried Deviled Eggs,south east asian,95.46,145.3,237.92
+26,dash,Grilled Butterflied Lamb with African Spices and Herbed Yogurt,american,326.72,27.72,299.81
+27,dash,Fried ham and cheese sandwich,italian,94.87,36.26,157.3
+28,dash,Kim in the Swim,american,0.19,23.46,0.04
+29,dash,Chile Hold The Beans Add The Vegs,mexican,117.27,71.13,26.36
+30,dash,Trout Parmesan,french,418.33,347.7,519.37
+31,dash,Citrus Grilled Salmon,nordic,27.34,38.86,21.63
+32,dash,Smoked Tuna Dip,american,47.69,2.4,15.61
+33,dash,Anything-But-Clementine Clafoutis,french,34.82,237.19,100.71
+34,dash,Grilled Bread with Goat Cheese & Green Olives,mediterranean,186.54,751.87,133.44
+35,dash,Orange Sweet Rolls,american,85.62,1314.61,276.55
+36,dash,Green Monster Recipe,world,0.16,10.71,0.12
+37,dash,Pesto Cottage Cheese Dip,american,86.52,298.87,131.06
+38,dash,Milky Way Cake,american,78.91,1041.58,401.55
+39,dash,Sweet 'N Spicy Red Eye Ham Steaks With Cheese Grits And Seared Chard,american,215.37,172.29,174.02
+40,keto,Keto Stuffed Peppers With Cauliflower Rice Recipe,mediterranean,88.5,49.93,106.59
+41,keto,"Aunt Rocky’s Sausage & Cheddar Biscuit Snacks (Gluten-Free, Low Carb)",american,142.12,37.8,245.26
+42,keto,Keto Parmesan Roasted Broccoli,british,36.86,21.07,48.44
+43,keto,Keto Cilantro Lime Cauliflower Rice,mediterranean,14.02,39.98,29.53
+44,keto,Keto Slow Cooker Mexican Chicken Thighs,mexican,118.81,13.06,116.16
+45,keto,Keto Parmesan Crisps with Tomato Slices,american,36.24,5.41,25.98
+46,keto,Moroccan Ketchup - Keto Spicy Tomato Dip,middle eastern,13.1,70.58,1.78
+47,keto,Quick Keto Chocolate Mousse,american,9.6,13.79,74.63
+48,keto,"Low Carb Keto ""Cornbread"" recipes",american,39.46,26.2,99.89
+49,keto,Blueberry cheesecake Keto,american,93.43,382.29,131.79
+50,keto,Easy Four Cheese Pesto Zoodles - Keto,italian,139.89,240.56,195.19
+51,keto,"Mustard Sardines Salad Recipe [Paleo, Keto]",american,32.18,3.95,14.99
+52,keto,"Broccoli & Chicken Stir Fry Recipe – Low Carb, Keto & Paleo recipes",chinese,104.47,48.84,99.09
+53,keto,Keto Pesto Chicken Pasta,italian,93.66,25.74,125.36
+54,keto,Keto bounty balls,american,5.95,71.26,101.43
+55,keto,"Crockpot Chicken Enchilada Bowls (Paleo, Whole30 + Keto)",south american,139.86,76.81,135.28
+56,keto,Easy Keto Meatballs,american,274.94,18.12,323.69
+57,keto,Keto Broccoli Casserole,american,90.44,45.17,347.03
+58,keto,Fully loaded pan fried radishes,british,25.59,8.78,25.2
+59,keto,Easiest Keto Meatza You’ll Ever Make! recipes,american,149.54,21.9,110.64
+60,keto,Rosemary Almond Keto Crackers,french,94.02,65.15,195.65
+61,keto,Keto Condensed Milk,american,3.48,11.42,141.73
+62,keto,Coconut Curry Chicken: A Keto Low Carb Curry Recipe,indian,109.96,48.36,141.36
+63,keto,Keto Vanilla Pudding ( egg and starch free),british,24.38,19.47,96.01
+64,keto,Keto Smoky Chicken and Vegetable Sheet Pan Dinner,british,211.65,96.02,237.49
+65,keto,Keto Mug Cake,american,19.73,87.96,30.93
+66,keto,Keto Thai Red Curry Paste,south east asian,8.29,44.37,63.96
+67,keto,Vegan Keto Shortbread Pie Crust recipes,american,16.55,53.02,125.8
+68,keto,Keto Pepper Steak,american,54.18,23.45,24.95
+69,keto,Keto Slow Cooker Brisket Chili Recipe,american,148.04,60.43,212.34
+70,keto,Keto Pork Chops al Pastor - Low Carb,italian,108.02,12.96,151.9
+71,keto,Keto Cheesy Beef taco skillet with Cauliflower,mexican,162.87,41.5,91.85
+72,keto,"Gluten Free, Keto Friendly, Low Carb, Pie crust",british,43.48,102.28,134.1
+73,keto,EZ Keto Pizza,italian,127.5,25.61,213.62
+74,keto,"Air Fryer Keto Fried Chicken | Paleo, Gluten Free",american,286.43,23.91,262.67
+75,keto,KETO Mexican Melty Chicken Queso Casserole,american,341.59,41.72,253.56
+76,keto,Keto-Friendly Soft Tacos — Steemit,mexican,87.04,24.12,123.81
+77,keto,Easy Keto Korean Beef with Cauli Rice,south east asian,89.67,32.44,105.26
+78,keto,"Mini Zucchini Avocado Burgers Recipe [Paleo, Keto, AIP]",american,44.44,15.24,93.04
+79,keto,Pork Tenderloin with Roasted Veggies (Keto),british,183.61,57.84,84.55
+80,keto,Chocolate Truffles,french,97.43,199.83,317.72
+81,keto,Low Carb Keto Asiago Alfredo Brussels Sprouts,italian,95.67,97.25,191.06
+82,keto,Keto Spinach Pesto Flatbread,italian,92.48,32.8,148.68
+83,keto,Keto Mousse,french,25.2,31.84,205.74
+84,keto,"Orange and Five-Spice Roasted Chicken Legs | Keto, Paleo",mediterranean,677.22,41.71,686.9
+85,keto,Creamy Keto Taco Soup with Ground Beef,mexican,114.4,72.09,218.99
+86,keto,Slow Cooker Keto Barbecue Meatloaf,central europe,261.46,139.57,317.04
+87,keto,Keto Crepes recipes,french,39.16,37.06,57.48
+88,keto,Beef Crust for Pizza,italian,75.92,4.27,121.14
+89,keto,"Keto Chicken Jalapeno Poppers Recipe [Dairy-Free, Low Carb, Paleo]",american,58.62,4.96,85.31
+90,keto,Sara Louise's Keto Baked Cauliflower Florets,mediterranean,81.75,98.68,140.13
+91,keto,Keto Creamy Cheddar Bacon Chicken,french,319.46,31.24,294.22
+92,keto,Keto Rosemary Dill Salmon recipes,nordic,515.92,6.24,160.09
+93,keto,Making Low Carb Keto Ice Cream For The First Time recipes,american,14.34,22.86,120.23
+94,mediterranean,Mediterranean Chicken recipes,mediterranean,146.34,20.28,109.94
+95,mediterranean,Mediterranean Chicken Couscous,mediterranean,171.8,202.28,75.79
+96,mediterranean,Dinner Tonight: Red Snapper with Tomatoes and Olives Baked in Foil Recipe,american,73.25,19.56,35.43
+97,mediterranean,Mediterranean Pan Roasted Salmon,nordic,97.73,52.22,84.28
+98,mediterranean,Mediterranean mac and cheese,american,92.93,346.28,85.18
+99,mediterranean,Greek lamb & macaroni bake,mediterranean,264.91,358.69,202.33
+100,mediterranean,Mediterranean Orzo Pilaf,mediterranean,39.38,194.4,53.3
+101,mediterranean,"Hummus Pizza, Mediterranean Style",italian,54.84,188.68,89.59
+102,mediterranean,"Stuffed Peppers, Tomatoes, and Mushrooms",italian,71.26,254.86,101.36
+103,mediterranean,Mediterranean Grilled Vegetable Soup,mediterranean,13.42,66.73,7.59
+104,mediterranean,Mediterranean Chicken,mediterranean,162.47,39.46,196.29
+105,mediterranean,Mediterranean-style Grilled Sardines,mediterranean,24.99,30.4,46.94
+106,mediterranean,Baked Hummus,mediterranean,59.63,73.86,114.77
+107,mediterranean,Mediterranean Tuna Salad,mediterranean,1.91,3.77,28.61
+108,mediterranean,Greek Grilled Salmon Kebabs with Tzatziki & Green Beans,mediterranean,141.41,99.83,114.17
+109,mediterranean,Greek Salad,mediterranean,14.99,66.76,35.63
+110,mediterranean,Herb Braised Chicken With Mushrooms And Tomatoes,french,124.82,254.42,152.74
+111,mediterranean,Italian Sausage & Vegetable Stew recipes,italian,120.35,97.18,216.44
+112,mediterranean,Spiced Silverbeet and Pumpkin Hash,american,20.99,88.57,107.25
+113,mediterranean,Mediterranean Salad,mediterranean,55.19,211.54,29.4
+114,mediterranean,Chicken with Cherry Tomato and Olive Topping,american,155.25,10.07,31.41
+115,mediterranean,Mediterranean Herbed Pork Roast recipes,mediterranean,342.31,24.32,147.2
+116,mediterranean,Irish Pizza,italian,110.38,202.45,185.25
+117,mediterranean,Mediterranean Vegan Bowl,american,33.75,147.86,66.38
+118,mediterranean,Mediterranean Chicken Recipe,mediterranean,107.59,183.51,20.94
+119,mediterranean,Spicy Shrimp Tortillitas with Mango Mayonnaise,mediterranean,84.45,218.71,191.1
+120,mediterranean,Mediterranean Meatballs,mediterranean,121.99,159.24,111.56
+121,mediterranean,Greek Meatball Mezze Bowls,mediterranean,129.23,118.99,93.66
+122,mediterranean,"Provence on a Plate - Roasted Eggplant, Tomato and Tapenade Pizza with Goat Cheese",italian,50.08,160.41,50.8
+123,mediterranean,Lamb Chops with Asparagus and Farro,italian,329.78,282.19,732.29
+124,mediterranean,Mediterranean Rice Salad with Roasted Red Peppers,mediterranean,60.67,519.99,83.21
+125,mediterranean,Mediterranean lamb pizza,italian,73.29,151.48,57.0
+126,mediterranean,Mediterranean Eggs,mediterranean,72.83,50.7,62.3
+127,mediterranean,School of Tapas: Catalan cod brandada,italian,75.66,6.74,405.28
+128,mediterranean,Mediterranean Style Linguini,italian,92.57,283.83,44.19
+129,mediterranean,Mediterranean Yogurt Dip recipes,mediterranean,46.18,57.38,32.25
+130,mediterranean,Mediterranean Jalapeño Poppers recipes,mediterranean,21.35,26.15,87.65
+131,paleo,Flaky Sriracha Cod over Parsnip Carrot Mas,american,9.26,42.6,176.28
+132,paleo,Paleo Pad Thai,south east asian,132.06,82.17,223.93
+133,paleo,Paleo Chocolate Pistachio Biscotti recipes,italian,53.41,214.31,129.8
+134,paleo,5 Minute Paleo Sorbet,italian,5.57,53.23,36.58
+135,paleo,"Salted Caramel Paleo Bark (GF, dairy-free) recipes",american,29.64,509.13,144.51
+136,paleo,Beef Stir-fry with Snow Peas and Mushrooms recipes,chinese,117.89,113.86,57.65
+137,paleo,Paleo Fried Rice,chinese,17.07,23.74,36.07
+138,paleo,Traditional German Rotkohl (Sweet/Sour Red Cabbage) recipes,central europe,13.91,131.15,48.71
+139,paleo,Paleo Broccoli Salad recipes,american,22.75,124.99,146.91
+140,paleo,Perfect Paleo Pizza,italian,123.47,75.65,235.87
+141,paleo,"Baked Low Carb Zucchini Fries (Paleo, AIP, Keto, Dairy Free)",french,25.33,57.48,97.11
+142,paleo,Paleo Strawberry Sundae,american,78.6,428.36,388.56
+143,paleo,Crab-Stuffed Avocados (Paleo),mediterranean,39.34,38.27,74.0
+144,paleo,Flourless Chocolate Peppermint Cake (Paleo and Low Carb) recipes,american,45.19,255.14,114.31
+145,paleo,Blueberry and macadamia yoghurt bark,french,24.89,74.19,67.42
+146,paleo,Roasted Tomato Soup,italian,39.32,88.7,50.97
+147,paleo,Paleo Ground Beef Spaghetti Squash Skillet,italian,96.21,128.43,115.48
+148,paleo,Roasted Beet and Micro Kale Egg White Frittata,italian,38.18,20.35,40.72
+149,paleo,Paleo Swedish Meatballs,nordic,123.49,48.93,150.26
+150,paleo,Paleo Lemon Bars,american,33.65,272.71,143.06
+151,paleo,Tortilla Soup Recipe,mexican,274.38,240.62,219.7
+152,paleo,Paleo Peach Crisp,french,39.58,126.88,97.83
+153,paleo,Hearty Paleo Chili,american,107.05,97.55,65.79
+154,paleo,Chocolate Paleo Chili,american,183.19,98.27,215.87
+155,paleo,Homemade Paleo Protein Bars,american,88.19,289.27,122.03
+156,paleo,"Chicken Sausage, Mashed Potatoes, and Baby Broccoli recipes",american,63.18,146.69,32.84
+157,paleo,Paleo pepperoni pizza,italian,66.53,212.2,71.37
+158,vegan,No-Cook Black Bean Salad,american,44.49,159.15,61.72
+159,vegan,Easy Brown Rice & Veggie Wrap,chinese,11.03,52.26,19.43
+160,vegan,Seitan & black bean stir-fry,asian,119.84,191.43,53.95
+161,vegan,Vegan Chocolate-Dipped Frozen Banana Bites,american,29.04,178.5,73.99
+162,vegan,Vegan Pumpkin Pie Cheesecake,american,53.69,369.5,218.47
+163,vegan,Vegan Fluffy Buttercream Frosting recipes,american,1.19,424.99,193.24
+164,vegan,Roasted Vegan Cauliflower Soup with Parsley-Chive Swirl,american,125.49,260.01,367.16
+165,vegan,Citrus Lime Tofu Salad,asian,27.09,20.25,31.08
+166,vegan,Vegan tiffin,american,60.38,272.18,287.22
+167,vegan,Vegan Sweet Potato Malai Kofta,american,36.9,128.0,128.65
+168,vegan,"Roast Chicken Dinner Potato Chips With Mushrooms, Lemon, and Thyme Recipe",french,24.46,16.85,1.91
+169,vegan,Hearty Vegan Polenta and Kale Soup With Miso and Toasted Sesame Oil Recipe,japanese,23.03,167.07,101.79
+170,vegan,The Ultimate Raw Taco,mexican,9.88,40.98,30.65
+171,vegan,"Roasted Garlic, White Bean & Kale Pizz'alad",italian,81.4,351.98,63.0
+172,vegan,Spice-crusted tofu with kumquat radish salad,asian,49.48,66.44,56.12
+173,vegan,"Bacon Ranch Salad, Now In Vegan Form!",american,37.9,51.12,156.63
+174,vegan,Golden beet hummus,eastern europe,40.89,119.51,112.69
+175,vegan,Raw Vegan Zoodles with Romesco,american,52.57,234.71,59.35
+176,vegan,Vegan Cheese Enchiladas,american,86.0,180.46,97.22
+177,vegan,"Crispy Fried Spinach with Tomato, Onion, Tamarind, and Yogurt Recipe",american,39.75,149.57,124.56
+178,vegan,Vegan Cherry Pie recipes,american,87.4,1168.14,445.86
+179,vegan,Creamy Coconut & Roasted Beet Soup with Pistachios & Greek Yogurt,mediterranean,53.36,194.74,139.46
+180,vegan,"Vegan Quinoa, Broccoli, and Kale Curry Recipe",american,42.54,161.71,55.0
+181,vegan,Vegan Gravy,american,16.42,50.17,27.99
+182,vegan,Vegan S'mores,american,6.55,59.48,27.17
+183,vegan,Vegan Sweet Potato Casserole,american,36.04,307.12,110.7
+184,vegan,Burgers with Chunky Grilled Vegetables,american,52.87,100.71,28.39
+185,vegan,Baby Bok Choy Salad with Mama O's Kimchi Paste,chinese,6.02,21.02,0.95
+186,vegan,Crêpes with Chicken and Morels,mediterranean,106.42,116.25,173.88
+187,vegan,Moroccan Pumpkin and Chickpea Stew,middle eastern,13.47,63.18,4.32
+188,vegan,Vegan fry-up,american,100.27,167.06,279.46
+189,vegan,"Big Quesadillas with Refried Beans, Spinach, and Avocado",mexican,51.06,204.95,54.93
+190,vegan,Vegan Kale Caesar Salad,american,18.09,31.38,9.93
+191,vegan,"""Refried"" Black Beans and Walnut Meat Tacos (Vegan)",american,133.18,332.91,127.84
+192,vegan,"Pasta With Snap Peas, Garlic, Lemon Zest, and Black Pepper (Vegan) Recipe",american,43.66,212.0,58.57
+193,vegan,"Potato, Asparagus & Mushroom Hash",american,25.67,131.88,43.33
+194,vegan,Broccoli Slaw w/ Mustard Vinaigrette,american,11.45,50.78,15.07
+195,vegan,Mushroom Beet Black Bean Burger,american,60.14,138.46,27.25
+196,vegan,Vegan Creamy Coleslaw,american,6.76,40.99,68.13
+197,vegan,Smoked Cauliflower Soup,american,49.78,134.47,17.29
+198,vegan,Baby Artichokes with Lemon and Olive Oil,mediterranean,90.34,307.15,220.77
+199,vegan,Vegan Chocolate Frosting recipes,american,7.27,143.81,160.91
