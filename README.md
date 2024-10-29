@@ -210,7 +210,7 @@ You can find the dataset under `data/data.csv`.
    docker-compose up postgres
    ```
 
-   Then:
+   Then in a new terminal window, run the following commands:
 
    ```bash
    pipenv shell
@@ -222,6 +222,8 @@ You can find the dataset under `data/data.csv`.
    *Ensure Docker containers are running before executing the script.*
 
 6. **Build and Run Services with Docker Compose**
+
+    **Important:** Ensure that `POSTGRES_HOST=postgres` in the `.env` file:
 
    ```bash
    docker-compose up --build
@@ -255,7 +257,8 @@ Access the application at `http://localhost:8000`.
 
 To access Grafana, visit `http://localhost:3000` and log in with the default credentials unless changed in the `.env`
 file (username: `admin`, password: `admin`).
-The Grafana dashboard.json file is located in the `grafana` folder in the repo.
+The Grafana dashboard.json file is located in the `grafana` folder in the repo. You can import it into Grafana to
+visualize the application's performance and user interactions.
 <p align="center">
   <img src="images/grafana_dashboard_screenshot1.png" width="600">
   <img src="images/grafana_dashboard_screenshot2.png" width="600">
@@ -426,10 +429,9 @@ An automated ingestion pipeline was implemented to process and index recipe data
 
 ### Steps
 
-1. **Data Collection**: Recipes were sourced from open datasets and APIs.
-2. **Data Cleaning and Transformation**: Ensured consistency in data formats and fields.
-3. **Indexing**: Recipes were indexed into Elasticsearch with appropriate mappings.
-4. **Database Population**: Recipe metadata and user-related data were stored in PostgreSQL.
+1. **Data Collection**: Recipes were sourced from an open dataset.
+2. **Data Cleaning and Transformation**: Ensured consistency in data formats and fields such as removing duplicates and transformations.
+3. **Indexing**: Recipes are indexed and retrieved using Minsearch.
 
 ## Interface
 
@@ -445,31 +447,14 @@ An automated ingestion pipeline was implemented to process and index recipe data
 
 The application is containerized using Docker and orchestrated with Docker Compose for easy deployment.
 
-## Reproducibility
-
-- **Setup Instructions**: Detailed steps provided.
-- **Dependencies**: Specified in `requirements.txt`.
-- **Version Control**: Specific package versions to avoid compatibility issues.
-- **Sample Data**: Included for testing and validation.
-
-## Best Practices
-
-- **Hybrid Search**: Combines text and vector search for improved accuracy.
-- **Document Re-ranking**: Custom scoring to prioritize relevant recipes.
-- **Prompt Engineering**: Optimized prompts for clarity and relevance.
-- **Error Handling**: Robust backend error handling.
-- **Security**: Secure management of API keys and user data.
-- **Logging**: Comprehensive logging for debugging and monitoring.
 
 ## Future Enhancements
 
 - **Advanced Nutritional Analysis**
 - **User Accounts and Profiles**
-- **Machine Learning-Based Recommendations**
-- **Integration with Wearables**
-- **Mobile Applications**
-- **Multi-Language Support**
 - **Social Sharing Features**
+- **Further improvements to the RAG model**
+- **Cloud Deployment and Scalability**
 
 ## Acknowledgments
 
