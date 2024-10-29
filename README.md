@@ -1,6 +1,9 @@
 # Meal Mentor
 
-**Meal Mentor** is an intelligent recipe recommendation system designed to help users discover healthy and nutritious meals tailored to their dietary preferences and nutritional goals. Leveraging advanced technologies like Retrieval-Augmented Generation (RAG) and Large Language Models (LLMs) from OpenAI, Meal Mentor provides personalized recipe suggestions based on diet types and specific nutritional values.
+**Meal Mentor** is an intelligent recipe recommendation system designed to help users discover healthy and nutritious
+meals tailored to their dietary preferences and nutritional goals. Leveraging advanced technologies like
+Retrieval-Augmented Generation (RAG) and Large Language Models (LLMs) from OpenAI, Meal Mentor provides personalized
+recipe suggestions based on diet types and specific nutritional values.
 
 <p align="center">
   <img src="images/meal_mentor_logo.png" width="600">
@@ -15,23 +18,23 @@
 - [Features](#features)
 - [Technologies Used](#technologies-used)
 - [System Architecture](#system-architecture)
-  - [Dataset: Healthy Diet Recipes](#dataset-healthy-diet-recipes)
+    - [Dataset: Healthy Diet Recipes](#dataset-healthy-diet-recipes)
 - [Setup and Installation](#setup-and-installation)
-  - [Prerequisites](#prerequisites)
-  - [Steps](#steps)
+    - [Prerequisites](#prerequisites)
+    - [Steps](#steps)
 - [Usage](#usage)
-  - [API Example](#api-example)
-  - [Example Response](#example-response)
+    - [API Example](#api-example)
+    - [Example Response](#example-response)
 - [Code Structure](#code-structure)
 - [Evaluation](#evaluation)
-  - [RAG Evaluation](#rag-evaluation)
+    - [RAG Evaluation](#rag-evaluation)
 - [Monitoring and Feedback](#monitoring-and-feedback)
-  - [Grafana Dashboard](#grafana-dashboard)
-  - [Feedback Mechanism](#feedback-mechanism)
+    - [Grafana Dashboard](#grafana-dashboard)
+    - [Feedback Mechanism](#feedback-mechanism)
 - [Ingestion Pipeline](#ingestion-pipeline)
-  - [Steps](#steps-1)
+    - [Steps](#steps-1)
 - [Interface](#interface)
-  - [Web Interface](#web-interface)
+    - [Web Interface](#web-interface)
 - [Containerization](#containerization)
 - [Reproducibility](#reproducibility)
 - [Best Practices](#best-practices)
@@ -43,15 +46,23 @@
 
 ## Introduction
 
-In today's fast-paced world, maintaining a healthy diet can be challenging. With an overwhelming number of recipes and dietary information available, finding meals that meet individual nutritional needs and preferences is time-consuming and often frustrating. Meal Mentor aims to simplify this process by providing personalized recipe recommendations based on users' dietary requirements and nutritional goals.
+In today's fast-paced world, maintaining a healthy diet can be challenging. With an overwhelming number of recipes and
+dietary information available, finding meals that meet individual nutritional needs and preferences is time-consuming
+and often frustrating. Meal Mentor aims to simplify this process by providing personalized recipe recommendations based
+on users' dietary requirements and nutritional goals.
 
 ## Problem Description
 
-Many individuals struggle to plan meals that align with their dietary preferences, nutritional goals, and health requirements. Whether someone is following a specific diet like keto, vegan, or Mediterranean, or trying to manage macronutrient intake (e.g., high protein, low carb), finding suitable recipes can be a daunting task.
+Many individuals struggle to plan meals that align with their dietary preferences, nutritional goals, and health
+requirements. Whether someone is following a specific diet like keto, vegan, or Mediterranean, or trying to manage
+macronutrient intake (e.g., high protein, low carb), finding suitable recipes can be a daunting task.
 
-Existing recipe platforms often lack the ability to provide personalized recommendations that consider both dietary restrictions and specific nutritional values. Users are left to manually sift through countless recipes, which is inefficient and discouraging.
+Existing recipe platforms often lack the ability to provide personalized recommendations that consider both dietary
+restrictions and specific nutritional values. Users are left to manually sift through countless recipes, which is
+inefficient and discouraging.
 
-**Meal Mentor** addresses this problem by leveraging advanced technologies to deliver tailored recipe suggestions, enhancing the user experience and promoting healthier eating habits.
+**Meal Mentor** addresses this problem by leveraging advanced technologies to deliver tailored recipe suggestions,
+enhancing the user experience and promoting healthier eating habits.
 
 ## Quick Application Demo
 
@@ -59,7 +70,8 @@ Existing recipe platforms often lack the ability to provide personalized recomme
 
 ## Project Overview
 
-Meal Mentor is an end-to-end application that combines a knowledge base of recipes with powerful search and AI capabilities to provide customized meal recommendations. The application utilizes:
+Meal Mentor is an end-to-end application that combines a knowledge base of recipes with powerful search and AI
+capabilities to provide customized meal recommendations. The application utilizes:
 
 - **Retrieval-Augmented Generation (RAG)**
 - **OpenAI API**
@@ -103,12 +115,18 @@ The Meal Mentor application consists of:
 
 ### Dataset: Healthy Diet Recipes
 
-This project utilizes the [Healthy Diet Recipes](https://www.kaggle.com/datasets/thedevastator/healthy-diet-recipes-a-comprehensive-dataset) dataset from Kaggle, offering a wide range of recipes tailored for various diets and cuisines, with a focus on healthy, nutritious meal options. The original dataset included information on extraction day and time, which has been removed for this use case as it was not essential. The data has also been cleaned to remove duplicates, resulting in a streamlined version optimized for efficient use with language models.
+This project utilizes
+the [Healthy Diet Recipes](https://www.kaggle.com/datasets/thedevastator/healthy-diet-recipes-a-comprehensive-dataset)
+dataset from Kaggle, offering a wide range of recipes tailored for various diets and cuisines, with a focus on healthy,
+nutritious meal options. The original dataset included information on extraction day and time, which has been removed
+for this use case as it was not essential. The data has also been cleaned to remove duplicates, resulting in a
+streamlined version optimized for efficient use with language models.
 
 #### Dataset Details:
 
 - **Total Entries**: 7,805 unique recipes.
-- **Subset for Application**: To reduce LLM calls and simplify usage, a random sample of 200 recipes was selected from the full dataset.
+- **Subset for Application**: To reduce LLM calls and simplify usage, a random sample of 200 recipes was selected from
+  the full dataset.
 
 #### Columns:
 
@@ -119,7 +137,8 @@ This project utilizes the [Healthy Diet Recipes](https://www.kaggle.com/datasets
 - **Carbs(g)**: The amount of carbohydrates per recipe in grams.
 - **Fat(g)**: The amount of fat per recipe in grams.
 
-This refined dataset supports designing diet-specific meal plans, examining nutrient distributions, and exploring healthy recipes across various dietary preferences and cuisines.
+This refined dataset supports designing diet-specific meal plans, examining nutrient distributions, and exploring
+healthy recipes across various dietary preferences and cuisines.
 
 You can find the dataset under `data/data.csv`.
 
@@ -153,11 +172,14 @@ You can find the dataset under `data/data.csv`.
 
 3. **Set Up Environment Variables**
 
-   Open the `.env` file in your preferred text editor and replace the placeholder values with your actual configuration details.
+   Open the `.env` file in your preferred text editor and replace the placeholder values with your actual configuration
+   details.
 
-   It is only required to set the `OPENAI_API_KEY` in the `.env` file. The other variables are optional and the current presets are application defaults.
+   It is only required to set the `OPENAI_API_KEY` in the `.env` file. The other variables are optional and the current
+   presets are application defaults.
 
-   **Note:** If you want to run the FastAPI backend locally, you need to set `POSTGRES_HOST=localhost` in the `.env` file.
+   **Note:** If you want to run the FastAPI backend locally, you need to set `POSTGRES_HOST=localhost` in the `.env`
+   file.
 
    **Note:** Ensure that your `.env` file is not committed to version control by adding it to your `.gitignore` file:
 
@@ -231,7 +253,8 @@ You can find the dataset under `data/data.csv`.
 
 Access the application at `http://localhost:8000`.
 
-To access Grafana, visit `http://localhost:3000` and log in with the default credentials unless changed in the `.env` file (username: `admin`, password: `admin`).
+To access Grafana, visit `http://localhost:3000` and log in with the default credentials unless changed in the `.env`
+file (username: `admin`, password: `admin`).
 The Grafana dashboard.json file is located in the `grafana` folder in the repo.
 <p align="center">
   <img src="images/grafana_dashboard_screenshot1.png" width="600">
@@ -283,19 +306,23 @@ The notebooks used for the evaluation and data processing are in the [`notebooks
 
 - [`rag_evaluation.ipynb`](notebooks/rag_evaluation.ipynb) - The notebook for evaluating the RAG models.
 - [`prepare_dataset.ipynb`](notebooks/prepare_dataset.ipynb) - The notebook for processing and cleaning the dataset.
-- [`retrieval_evaluation_minsearch.ipynb`](notebooks/retrieval_evaluation_minsearch.ipynb) - The notebook for evaluating the retrieval model with Minsearch.
-- [`retrieval_evaluation_elasticsearch.ipynb`](notebooks/retrieval_evaluation_elasticsearch.ipynb) - The notebook for evaluating the retrieval model with Elasticsearch.
+- [`retrieval_evaluation_minsearch.ipynb`](notebooks/retrieval_evaluation_minsearch.ipynb) - The notebook for evaluating
+  the retrieval model with Minsearch.
+- [`retrieval_evaluation_elasticsearch.ipynb`](notebooks/retrieval_evaluation_elasticsearch.ipynb) - The notebook for
+  evaluating the retrieval model with Elasticsearch.
 
 The data used for the application is in the [`data`](data/) folder:
 
 - [`data.csv`](data/data.csv) - The dataset used for the application.
 - [`All_Diets.csv`](data/All_Diets.csv) - The original dataset.
-- [`ground-truth-retrieval_4o_mini.csv`](data/ground-truth-retrieval_4o_mini.csv) - Ground truth data used for evaluation.
+- [`ground-truth-retrieval_4o_mini.csv`](data/ground-truth-retrieval_4o_mini.csv) - Ground truth data used for
+  evaluation.
 - [`ground-truth-retrieval_4o.csv`](data/ground-truth-retrieval_4o.csv) - Ground truth data used for evaluation.
 - [`rag-eval-gpt-4o-mini.csv`](data/rag-eval-gpt-4o-mini.csv) - RAG evaluation data.
 - [`rag-eval-gpt-4o.csv`](data/rag-eval-gpt-4o.csv) - RAG evaluation data.
 
 The Grafana dashboard configuration is in the [`grafana`](grafana/) folder:
+
 - [`dashboard.json`](grafana/dashboard.json) - The Grafana dashboard configuration.
 
 ## Evaluation
@@ -320,9 +347,49 @@ Two RAG approaches were tested to optimize the integration between the knowledge
 | PARTLY_RELEVANT | 76    | 0.380      |
 | NON_RELEVANT    | 29    | 0.145      |
 
-The notebook for this evaluation is located at [`notebooks/rag_evaluation.ipynb`](notebooks/rag_evaluation.ipynb), and the ground truth data used can be found in [`data/ground-truth-retrieval_4o_mini.csv`](data/ground-truth-retrieval_4o_mini.csv).
+The notebook for this evaluation is located at [`notebooks/rag_evaluation.ipynb`](notebooks/rag_evaluation.ipynb), and
+the ground truth data used can be found in [
+`data/ground-truth-retrieval_4o_mini.csv`](data/ground-truth-retrieval_4o_mini.csv).
 
-**Insight**: Based on these results, **gpt-4o-mini** was chosen due to its higher proportion of fully relevant responses.
+**Insight**: Based on these results, **gpt-4o-mini** was chosen due to its higher proportion of fully relevant
+responses.
+
+### Retrieval Evaluation
+
+Two retrieval models were each evaluated on two different datasets generated by gpt-4o and gpt-4o-mini thus to determine
+the optimal approach for indexing and searching the recipe data. Thus making for 4 different evaluations:
+
+#### **Minsearch Evaluation**
+
+For the gpt-4o-mini ground truth dataset:
+
+| Metric   | Value            |
+|----------|------------------|
+| Hit Rate | 0.898            |
+| MRR      | 0.85794126984127 |
+
+For the gpt-4o ground truth dataset:
+
+| Metric   | Value              |
+|----------|--------------------|
+| Hit Rate | 0.947              |
+| MRR      | 0.9229761904761906 |
+
+#### **Elasticsearch Evaluation**
+
+For the gpt-4o-mini ground truth dataset:
+
+| Metric   | Value              |
+|----------|--------------------|
+| Hit Rate | 0.929              |
+| MRR      | 0.9034500000000001 |
+
+For the gpt-4o ground truth dataset:
+
+| Metric   | Value              |
+|----------|--------------------|
+| Hit Rate | 0.974              |
+| MRR      | 0.9506833333333334 |
 
 ## Monitoring and Feedback
 
@@ -330,7 +397,8 @@ Meal Mentor collects user feedback and monitors system performance using Grafana
 
 ### Grafana Dashboard
 
-The Grafana dashboard provides comprehensive insights into the application's performance, user interactions, and resource utilization. The dashboard includes the following panels:
+The Grafana dashboard provides comprehensive insights into the application's performance, user interactions, and
+resource utilization. The dashboard includes the following panels:
 
 1. **Question / Answer** (Table)
 2. **Most Frequent Keywords in Questions** (Table)
@@ -344,11 +412,13 @@ The Grafana dashboard provides comprehensive insights into the application's per
 10. **Total OpenAI Cost Over Time By Day** (Table)
 11. **Average Tokens Used Per Conversation** (Table)
 
-These panels help in monitoring the performance, quality, and cost-efficiency of the Meal Mentor application, aiming to optimize user engagement and experience.
+These panels help in monitoring the performance, quality, and cost-efficiency of the Meal Mentor application, aiming to
+optimize user engagement and experience.
 
 ### Feedback Mechanism
 
-Users can rate the relevance of the recommendations and provide comments. This data is stored in PostgreSQL and used to refine the recommendation algorithms.
+Users can rate the relevance of the recommendations and provide comments. This data is stored in PostgreSQL and used to
+refine the recommendation algorithms.
 
 ## Ingestion Pipeline
 
@@ -403,7 +473,8 @@ The application is containerized using Docker and orchestrated with Docker Compo
 
 ## Acknowledgments
 
-This project was developed as part of the **LLM Zoomcamp** program. Special thanks to **Alexey Grigorev**, the **DataTalks team**, and the community for their invaluable support.
+This project was developed as part of the **LLM Zoomcamp** program. Special thanks to **Alexey Grigorev**, the *
+*DataTalks team**, and the community for their invaluable support.
 
 ## License
 
