@@ -88,6 +88,7 @@ capabilities to provide customized meal recommendations. The application utilize
 - **Real-Time Monitoring**: Tracks user interactions and system performance.
 - **Conversational Interface**: Supports natural language queries for an enhanced user experience.
 - **Complete Containerization with Docker Compose**: Ensures easy deployment and scalability.
+- **Automated Ingestion Pipeline**: Indexes recipe data for efficient search and retrieval automatically when application starts.
 
 ## Technologies Used
 
@@ -110,7 +111,7 @@ The Meal Mentor application consists of:
 - **Database (PostgreSQL)**: Stores user data, feedback, and logs.
 - **LLM Integration (OpenAI API)**: Processes queries to generate personalized responses.
 - **Monitoring (Grafana)**: Visualizes system performance and user interactions.
-- **Ingestion Pipeline**: Automates data processing and indexing for recipe recommendations with an ingestion script.
+- **Ingestion Pipeline**: Automates data processing and indexing for recipe recommendations with an automatic ingestion script when the app is started.
 - **Feedback Mechanism**: Collects user ratings and comments to improve recommendations.
 
 ### Dataset: Healthy Diet Recipes
