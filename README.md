@@ -1,29 +1,37 @@
 # Meal Mentor
+
 **Meal Mentor** is an intelligent recipe recommendation system designed to help users discover healthy and nutritious meals tailored to their dietary preferences and nutritional goals. Leveraging advanced technologies like Retrieval-Augmented Generation (RAG) and Large Language Models (LLMs) from OpenAI, Meal Mentor provides personalized recipe suggestions based on diet types and specific nutritional values.
 
 <p align="center">
   <img src="images/meal_mentor_logo.png" width="600">
 </p>
 
-## Quick Application Demo
-![Demo](images/demo.gif)
-
-
 ## Table of Contents
 
 - [Introduction](#introduction)
+- [Problem Description](#problem-description)
+- [Quick Application Demo](#quick-application-demo)
 - [Project Overview](#project-overview)
 - [Features](#features)
 - [Technologies Used](#technologies-used)
 - [System Architecture](#system-architecture)
+  - [Dataset: Healthy Diet Recipes](#dataset-healthy-diet-recipes)
 - [Setup and Installation](#setup-and-installation)
+  - [Prerequisites](#prerequisites)
+  - [Steps](#steps)
 - [Usage](#usage)
+  - [API Example](#api-example)
+  - [Example Response](#example-response)
+- [Code Structure](#code-structure)
 - [Evaluation](#evaluation)
   - [RAG Evaluation](#rag-evaluation)
 - [Monitoring and Feedback](#monitoring-and-feedback)
   - [Grafana Dashboard](#grafana-dashboard)
+  - [Feedback Mechanism](#feedback-mechanism)
 - [Ingestion Pipeline](#ingestion-pipeline)
+  - [Steps](#steps-1)
 - [Interface](#interface)
+  - [Web Interface](#web-interface)
 - [Containerization](#containerization)
 - [Reproducibility](#reproducibility)
 - [Best Practices](#best-practices)
@@ -45,6 +53,10 @@ Existing recipe platforms often lack the ability to provide personalized recomme
 
 **Meal Mentor** addresses this problem by leveraging advanced technologies to deliver tailored recipe suggestions, enhancing the user experience and promoting healthier eating habits.
 
+## Quick Application Demo
+
+![Demo](images/demo.gif)
+
 ## Project Overview
 
 Meal Mentor is an end-to-end application that combines a knowledge base of recipes with powerful search and AI capabilities to provide customized meal recommendations. The application utilizes:
@@ -63,6 +75,7 @@ Meal Mentor is an end-to-end application that combines a knowledge base of recip
 - **User Feedback Collection**: Allows users to provide feedback to improve recommendations.
 - **Real-Time Monitoring**: Tracks user interactions and system performance.
 - **Conversational Interface**: Supports natural language queries for an enhanced user experience.
+- **Complete Containerization with Docker Compose**: Ensures easy deployment and scalability.
 
 ## Technologies Used
 
@@ -85,16 +98,20 @@ The Meal Mentor application consists of:
 - **Database (PostgreSQL)**: Stores user data, feedback, and logs.
 - **LLM Integration (OpenAI API)**: Processes queries to generate personalized responses.
 - **Monitoring (Grafana)**: Visualizes system performance and user interactions.
+- **Ingestion Pipeline**: Automates data processing and indexing for recipe recommendations with an ingestion script.
+- **Feedback Mechanism**: Collects user ratings and comments to improve recommendations.
 
 ### Dataset: Healthy Diet Recipes
 
 This project utilizes the [Healthy Diet Recipes](https://www.kaggle.com/datasets/thedevastator/healthy-diet-recipes-a-comprehensive-dataset) dataset from Kaggle, offering a wide range of recipes tailored for various diets and cuisines, with a focus on healthy, nutritious meal options. The original dataset included information on extraction day and time, which has been removed for this use case as it was not essential. The data has also been cleaned to remove duplicates, resulting in a streamlined version optimized for efficient use with language models.
 
 #### Dataset Details:
+
 - **Total Entries**: 7,805 unique recipes.
 - **Subset for Application**: To reduce LLM calls and simplify usage, a random sample of 200 recipes was selected from the full dataset.
-  
+
 #### Columns:
+
 - **Diet_type**: Specifies the type of diet each recipe supports (e.g., vegan, keto).
 - **Recipe_name**: The name or title of the recipe.
 - **Cuisine_type**: Indicates the cuisine the recipe is associated with (e.g., Mediterranean, Indian).
@@ -105,6 +122,7 @@ This project utilizes the [Healthy Diet Recipes](https://www.kaggle.com/datasets
 This refined dataset supports designing diet-specific meal plans, examining nutrient distributions, and exploring healthy recipes across various dietary preferences and cuisines.
 
 You can find the dataset under `data/data.csv`.
+
 ## Setup and Installation
 
 ### Prerequisites
@@ -114,6 +132,7 @@ You can find the dataset under `data/data.csv`.
 - **OpenAI API Key**
 - **Elasticsearch** (Docker image)
 - **PostgreSQL** (Docker image)
+- **Grafana** (Docker image)
 
 ### Steps
 
@@ -124,24 +143,22 @@ You can find the dataset under `data/data.csv`.
    cd meal-mentor
    ```
 
-2. **Copy the Template:**
-   - Duplicate the `.env.template` file and rename the copy to `.env`.
+2. **Copy the Template**
 
-     ```bash
-     cp .env.template .env
-     ```
-
-2. **Set Up Environment Variables**
-
-   Create a `.env` file in the project root directory by copying the provided `.env.template`:
+   Duplicate the `.env.template` file and rename the copy to `.env`:
 
    ```bash
    cp .env.template .env
    ```
 
-   Open the `.env` file in your preferred text editor and replace the placeholder values with your actual configuration details:
-It is only required to set the `OPENAI_API_KEY` in the `.env` file. The other variables are optional and the current presets are application defaults.
-   ```env
+3. **Set Up Environment Variables**
+
+   Open the `.env` file in your preferred text editor and replace the placeholder values with your actual configuration details.
+
+   It is only required to set the `OPENAI_API_KEY` in the `.env` file. The other variables are optional and the current presets are application defaults.
+
+   **Note:** If you want to run the FastAPI backend locally, you need to set `POSTGRES_HOST=localhost` in the `.env` file.
+
    **Note:** Ensure that your `.env` file is not committed to version control by adding it to your `.gitignore` file:
 
    ```gitignore
@@ -151,72 +168,132 @@ It is only required to set the `OPENAI_API_KEY` in the `.env` file. The other va
 
 4. **Install Python Dependencies**
 
-   Create and activate a virtual environment:
+   For dependency management, we use pipenv, so you need to install it:
 
    ```bash
-   python3.11 -m venv venv
-   source venv/bin/activate
+   pip install pipenv
    ```
 
-   Install required packages:
+   Once installed, you can install the app dependencies:
 
    ```bash
-   pip install -r requirements.txt
+   pipenv install --dev
    ```
 
-4. **Build and Run Services with Docker Compose**
+5. **Initialize the Database**
+
+   Before the application starts for the first time, the database needs to be initialized.
+
+   ```bash
+   docker-compose up postgres
+   ```
+
+   Then:
+
+   ```bash
+   pipenv shell
+   cd meal_mentor
+   export POSTGRES_HOST=localhost
+   python db_prep.py
+   ```
+
+   *Ensure Docker containers are running before executing the script.*
+
+6. **Build and Run Services with Docker Compose**
 
    ```bash
    docker-compose up --build
    ```
 
-   This starts the FastAPI application, Elasticsearch, PostgreSQL, and Grafana (if configured).
+   This starts the FastAPI application, PostgreSQL, and Grafana.
 
-5. **Initialize the Database and Elasticsearch Index**
+7. **Alternatively, you can run the FastAPI application locally:**
 
-   ```bash
-   python ingest_data.py
+   First, change the `POSTGRES_HOST` in the `.env` file to `localhost`:
+
+   ```env
+   POSTGRES_HOST=localhost
    ```
 
-   *Ensure Docker containers are running before executing the script.*
+   Start only PostgreSQL and Grafana:
+
+   ```bash
+   docker-compose up postgres grafana
+   ```
+
+   Then run the FastAPI application in your terminal:
+
+   ```bash
+   pipenv run python -m uvicorn meal_mentor.app:app --reload
+   ```
 
 ## Usage
 
 Access the application at `http://localhost:8000`.
 
+To access Grafana, visit `http://localhost:3000` and log in with the default credentials unless changed in the `.env` file (username: `admin`, password: `admin`).
+The Grafana dashboard.json file is located in the `grafana` folder in the repo.
+<p align="center">
+  <img src="images/grafana_dashboard_screenshot1.png" width="600">
+  <img src="images/grafana_dashboard_screenshot2.png" width="600">
+</p>
+
+To check the content of the database, use `pgcli` (already installed with pipenv):
+
+```bash
+pipenv run pgcli -h localhost -U your_username -d meal_mentor -W
+```
+
 ### API Example
 
 ```bash
-curl -X POST "http://localhost:8000/recommendations" \
+curl -X POST "http://localhost:8000/api/question" \
      -H "Content-Type: application/json" \
      -d '{
-           "diet_type": "keto",
-           "min_protein": 20,
-           "max_carbs": 10,
-           "include_ingredients": ["chicken", "spinach"],
-           "exclude_ingredients": ["nuts"]
+           "question": "What is a nice healthy Italian recipe?"
          }'
 ```
 
-### Example Response:
+### Example Response
 
 ```json
 {
-  "recipes": [
-    {
-      "title": "Grilled Chicken with Spinach",
-      "ingredients": ["chicken breast", "spinach", "olive oil", "garlic"],
-      "instructions": "Season the chicken breast with salt and pepper...",
-      "nutrition": {
-        "calories": 350,
-        "protein": 30,
-        "carbs": 8,
-        "fat": 20
-      }
-    }
-  ]
+  "conversation_id": "71aea2ea-ad95-4e47-b050-cbce07729faf",
+  "question": "What is a nice healthy Italian recipe?",
+  "answer": "A nice healthy Italian recipe is the Italian Tomato Tart, which is part of the DASH diet. It has 70.67g of protein, 300.07g of carbs, and 63.38g of fat."
 }
 ```
+
+## Code Structure
+
+The code for the application is in the [`meal_mentor`](meal_mentor/) folder:
+
+- [`app.py`](meal_mentor/app.py) - The FastAPI API, the main entry point to the application.
+- [`rag.py`](meal_mentor/rag.py) - The main RAG logic for retrieving the data and building the prompt.
+- [`ingest.py`](meal_mentor/ingest.py) - Loading the data into the knowledge base.
+- [`minsearch.py`](meal_mentor/minsearch.py) - An in-memory search engine.
+- [`db.py`](meal_mentor/db.py) - The logic for logging the requests and responses to PostgreSQL.
+- [`db_prep.py`](meal_mentor/db_prep.py) - The script for initializing the database.
+
+The frontend code is in the [`static`](static/) folder:
+
+- [`index.html`](static/index.html) - The main HTML and JavaScript file with the frontend code.
+
+The notebooks used for the evaluation and data processing are in the [`notebooks`](notebooks/) folder:
+
+- [`rag_evaluation.ipynb`](notebooks/rag_evaluation.ipynb) - The notebook for evaluating the RAG models.
+- [`prepare_dataset.ipynb`](notebooks/prepare_dataset.ipynb) - The notebook for processing and cleaning the dataset.
+- [`retrieval_evaluation_minsearch.ipynb`](notebooks/retrieval_evaluation_minsearch.ipynb) - The notebook for evaluating the retrieval model with Minsearch.
+- [`retrieval_evaluation_elasticsearch.ipynb`](notebooks/retrieval_evaluation_elasticsearch.ipynb) - The notebook for evaluating the retrieval model with Elasticsearch.
+
+The data used for the application is in the [`data`](data/) folder:
+
+- [`data.csv`](data/data.csv) - The dataset used for the application.
+- [`All_Diets.csv`](data/All_Diets.csv) - The original dataset.
+- [`ground-truth-retrieval_4o_mini.csv`](data/ground-truth-retrieval_4o_mini.csv) - Ground truth data used for evaluation.
+- [`ground-truth-retrieval_4o.csv`](data/ground-truth-retrieval_4o.csv) - Ground truth data used for evaluation.
+- [`rag-eval-gpt-4o-mini.csv`](data/rag-eval-gpt-4o-mini.csv) - RAG evaluation data.
+- [`rag-eval-gpt-4o.csv`](data/rag-eval-gpt-4o.csv) - RAG evaluation data.
 
 ## Evaluation
 
@@ -240,7 +317,7 @@ Two RAG approaches were tested to optimize the integration between the knowledge
 | PARTLY_RELEVANT | 76    | 0.380      |
 | NON_RELEVANT    | 29    | 0.145      |
 
-The notebook for this evaluation is located at `notebooks/rag_evaluation.ipynb`, and the ground truth data used can be found in `data/ground-truth-retrieval_4o_mini.csv`.
+The notebook for this evaluation is located at [`notebooks/rag_evaluation.ipynb`](notebooks/rag_evaluation.ipynb), and the ground truth data used can be found in [`data/ground-truth-retrieval_4o_mini.csv`](data/ground-truth-retrieval_4o_mini.csv).
 
 **Insight**: Based on these results, **gpt-4o-mini** was chosen due to its higher proportion of fully relevant responses.
 
@@ -274,7 +351,7 @@ Users can rate the relevance of the recommendations and provide comments. This d
 
 An automated ingestion pipeline was implemented to process and index recipe data into the knowledge base.
 
-### Steps:
+### Steps
 
 1. **Data Collection**: Recipes were sourced from open datasets and APIs.
 2. **Data Cleaning and Transformation**: Ensured consistency in data formats and fields.
