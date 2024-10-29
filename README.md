@@ -22,6 +22,7 @@ recipe suggestions based on diet types and specific nutritional values.
 - [Setup and Installation](#setup-and-installation)
     - [Prerequisites](#prerequisites)
     - [Installation Steps](#installation-steps)
+    - [Setting up Grafana](#setting-up-grafana)
 - [Usage](#usage)
     - [API Example](#api-example)
     - [Example Response](#example-response)
@@ -253,6 +254,36 @@ You can find the dataset under `data/data.csv`.
    ```bash
    pipenv run python -m uvicorn meal_mentor.app:app --reload
    ```
+   
+### Setting up Grafana
+
+All Grafana configurations are in the [`grafana`](grafana/) folder:
+
+- [`init.py`](grafana/init.py) - for initializing the datasource and the dashboard.
+- [`dashboard.json`](grafana/dashboard.json) - the actual dashboard (taken from LLM Zoomcamp without changes).
+
+To initialize the dashboard, first ensure Grafana is
+running (it starts automatically when you do `docker-compose up`).
+
+Then run:
+
+```bash
+pipenv shell
+
+cd grafana
+
+# make sure the POSTGRES_HOST variable is not overwritten 
+env | grep POSTGRES_HOST
+
+python init.py
+```
+
+Then go to [localhost:3000](http://localhost:3000):
+
+- Login: "admin"
+- Password: "admin"
+
+When prompted, keep "admin" as the new password.
 
 ## Usage
 
@@ -450,35 +481,6 @@ resource utilization. The dashboard includes the following panels:
 These panels help in monitoring the performance, quality, and cost-efficiency of the Meal Mentor application, aiming to
 optimize user engagement and experience.
 
-### Setting up Grafana
-
-All Grafana configurations are in the [`grafana`](grafana/) folder:
-
-- [`init.py`](grafana/init.py) - for initializing the datasource and the dashboard.
-- [`dashboard.json`](grafana/dashboard.json) - the actual dashboard (taken from LLM Zoomcamp without changes).
-
-To initialize the dashboard, first ensure Grafana is
-running (it starts automatically when you do `docker-compose up`).
-
-Then run:
-
-```bash
-pipenv shell
-
-cd grafana
-
-# make sure the POSTGRES_HOST variable is not overwritten 
-env | grep POSTGRES_HOST
-
-python init.py
-```
-
-Then go to [localhost:3000](http://localhost:3000):
-
-- Login: "admin"
-- Password: "admin"
-
-When prompted, keep "admin" as the new password.
 
 ### Feedback Mechanism
 
