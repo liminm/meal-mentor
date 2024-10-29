@@ -4,23 +4,20 @@ verify_ssl = true
 name = "pypi"
 
 [packages]
-fastapi = "*"
-uvicorn = "*"
-openai = "*"
-scikit-learn = "*"
-pandas = "*"
-psycopg2-binary = "*"
-python-dotenv = "*"
+fastapi = "0.115.4"
+uvicorn = "0.32.0"
+openai = "1.52.2"
+scikit-learn = "1.5.2"
+pandas = "2.2.3"
+psycopg2-binary = "2.9.10"
+python-dotenv = "1.0.1"
 
 [dev-packages]
-json = "*"
-sentence_transformers=2.7
-tqdm = "*"
-export = "*"
-tqdm = "*"
-notebook = "==7.1.2"
-ipywidgets = "*"
-pgcli = "*"
+export = "0.2.1"
+tqdm = "4.66.6"
+notebook = "7.1.2"
+ipywidgets = "8.1.5"
+pgcli = "4.1.0"
 
 [requires]
 python_version = "3.11"
