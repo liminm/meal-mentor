@@ -256,13 +256,22 @@ You can find the dataset under `data/data.csv`.
 
 ## Usage
 
-Access the application at `http://localhost:8000`.
+Access the application at `http://localhost:8000`. You will be greeted with a web interface where you can input your
+questions and receive personalized recipe recommendations based on your dietary preferences and nutritional goals.
+Additionally you can provide feedback on the recommendations to help improve the system.
+
+<p align="center">
+  <img src="images/demo2.png" width="600">
+  <img src="images/demo3.png" width="600">
+  <img src="images/demo4.png" width="600">
+</p>
 
 To access Grafana, visit `http://localhost:3000` and log in with the default credentials unless changed in the `.env`
 file (username: `admin`, password: `admin`).
 
 The Grafana `dashboard.json` file is located in the `grafana` folder in the repo. You can import it into Grafana to
-visualize the application's performance and user interactions.
+visualize the application's performance and user interactions. For further info on how to setup Grafana, refer to the
+[Setting up Grafana](#setting-up-grafana) section.
 
 <p align="center">
   <img src="images/grafana_dashboard_screenshot1.png" width="600">
