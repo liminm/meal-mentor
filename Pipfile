@@ -13,6 +13,9 @@ psycopg2-binary = "*"
 python-dotenv = "*"
 
 [dev-packages]
+json = "*"
+sentence_transformers=2.7
+tqdm = "*"
 export = "*"
 tqdm = "*"
 notebook = "==7.1.2"

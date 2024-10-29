@@ -21,9 +21,6 @@ if OPENAI_API_KEY is not None:
 else:
     print("Something went wrong; Make sure you have added the OPENAI_API_KEY in the .env file")
 
-# client = OpenAI(api_key=OPENAI_API_KEY)
-# es_client = Elasticsearch('http://localhost:9200')
-
 documents = ingest.ingest_data()
 text_fields = [
     "recipe_name",
@@ -68,42 +65,6 @@ def search(
     )
 
     return results
-
-
-#
-# def elastic_search(
-#         query: str,
-#         es_client,
-#         index_name: str = "recipes"
-# ):
-#     search_query = {
-#         "size": 5,
-#         "query": {
-#             "bool": {
-#                 "must": {
-#                     "multi_match": {
-#                         "query": query,
-#                         "fields": ["question^3", "text", "section"],
-#                         "type": "best_fields"
-#                     }
-#                 },
-#                 # "filter": {
-#                 #     "term": {
-#                 #         "course": "data-engineering-zoomcamp"
-#                 #     }
-#                 # }
-#             }
-#         }
-#     }
-#
-#     response = es_client.search(index=index_name, body=search_query)
-#
-#     result_docs = []
-#
-#     for hit in response['hits']['hits']:
-#         result_docs.append(hit['_source'])
-#
-#     return result_docs
 
 
 prompt_template = """
