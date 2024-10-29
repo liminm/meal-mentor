@@ -295,6 +295,9 @@ The data used for the application is in the [`data`](data/) folder:
 - [`rag-eval-gpt-4o-mini.csv`](data/rag-eval-gpt-4o-mini.csv) - RAG evaluation data.
 - [`rag-eval-gpt-4o.csv`](data/rag-eval-gpt-4o.csv) - RAG evaluation data.
 
+The Grafana dashboard configuration is in the [`grafana`](grafana/) folder:
+- [`dashboard.json`](grafana/dashboard.json) - The Grafana dashboard configuration.
+
 ## Evaluation
 
 ### RAG Evaluation

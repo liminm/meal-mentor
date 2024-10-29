@@ -4,16 +4,20 @@ verify_ssl = true
 name = "pypi"
 
 [packages]
+fastapi = "*"
+uvicorn = "*"
 openai = "*"
 scikit-learn = "*"
 pandas = "*"
-flask = "*"
+psycopg2-binary = "*"
+python-dotenv = "*"
 
 [dev-packages]
 export = "*"
 tqdm = "*"
 notebook = "==7.1.2"
 ipywidgets = "*"
+pgcli = "*"
 
 [requires]
 python_version = "3.11"

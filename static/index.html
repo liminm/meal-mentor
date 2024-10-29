@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Meta Tags -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Meal Mentor Q&A</title>
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap" rel="stylesheet">
+
+    <!-- Styles -->
+    <style>
+        /* Global Reset */
+        *, *::before, *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* Root Variables */
+        :root {
+            --primary-color: #4CAF50; /* Green */
+            --secondary-color: #81C784; /* Light Green */
+            --background-color: #FFFFFF;
+            --text-color: #333333;
+            --border-radius: 8px;
+            --transition-speed: 0.3s;
+            --box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+        }
+
+        /* Body Styling */
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background-color: #F7F8FA;
+            color: var(--text-color);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            padding: 2rem;
+        }
+
+        /* Container */
+        .container {
+            width: 100%;
+            max-width: 600px;
+            background-color: var(--background-color);
+            border-radius: var(--border-radius);
+            box-shadow: var(--box-shadow);
+            overflow: hidden;
+        }
+
+        /* Header */
+        .header {
+            background-image: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: #fff;
+            padding: 2rem;
+            text-align: center;
+        }
+
+        .header h1 {
+            font-size: 2.5rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .header p {
+            font-size: 1.1rem;
+            opacity: 0.9;
+        }
+
+        /* Form Section */
+        .form-section {
+            padding: 2rem;
+        }
+
+        #question-form {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        #question-input {
+            width: 100%;
+            padding: 1rem;
+            font-size: 1.1rem;
+            border: 1px solid #CCCCCC;
+            border-radius: var(--border-radius);
+            transition: border-color var(--transition-speed);
+        }
+
+        #question-input:focus {
+            border-color: var(--primary-color);
+            outline: none;
+        }
+
+        #submit-question {
+            padding: 1rem;
+            font-size: 1.1rem;
+            font-weight: 600;
+            background-color: var(--primary-color);
+            color: #fff;
+            border: none;
+            border-radius: var(--border-radius);
+            cursor: pointer;
+            transition: background-color var(--transition-speed), transform var(--transition-speed);
+        }
+
+        #submit-question:hover {
+            background-color: var(--secondary-color);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        #submit-question:disabled {
+            background-color: #A5D6A7;
+            cursor: not-allowed;
+            transform: none;
+            box-shadow: none;
+        }
+
+        /* Loading Spinner */
+        .spinner {
+            width: 24px;
+            height: 24px;
+            border: 3px solid #f3f3f3;
+            border-top: 3px solid var(--primary-color);
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            margin: 0 auto;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
+        /* Answer Section */
+        #answer-section {
+            display: none;
+            padding: 2rem;
+            background-color: #FAFAFA;
+            border-top: 1px solid #E0E0E0;
+        }
+
+        #answer-section h2 {
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            color: var(--primary-color);
+        }
+
+        #display-question, #display-answer {
+            font-size: 1.1rem;
+            line-height: 1.6;
+            margin-bottom: 1rem;
+        }
+
+        /* Feedback Section */
+        #feedback-section {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+
+        #feedback-section button {
+            flex: 1;
+            padding: 0.75rem;
+            font-size: 1rem;
+            font-weight: 600;
+            border: none;
+            border-radius: var(--border-radius);
+            cursor: pointer;
+            transition: background-color var(--transition-speed), transform var(--transition-speed);
+        }
+
+        #feedback-positive {
+            background-color: #4CAF50;
+            color: #fff;
+        }
+
+        #feedback-positive:hover {
+            background-color: #43A047;
+            transform: translateY(-2px);
+        }
+
+        #feedback-negative {
+            background-color: #F44336;
+            color: #fff;
+        }
+
+        #feedback-negative:hover {
+            background-color: #E53935;
+            transform: translateY(-2px);
+        }
+
+        /* Messages */
+        .message {
+            color: #F44336;
+            font-weight: 500;
+            margin-top: 1rem;
+            text-align: center;
+        }
+
+        .success-message {
+            color: #4CAF50;
+            font-weight: 500;
+            margin-top: 1rem;
+            text-align: center;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 600px) {
+            .header h1 {
+                font-size: 2rem;
+            }
+
+            #question-input, #submit-question {
+                font-size: 1rem;
+            }
+
+            #answer-section h2 {
+                font-size: 1.3rem;
+            }
+
+            #display-question, #display-answer {
+                font-size: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <!-- Header -->
+    <div class="header">
+        <h1>Meal Mentor Q&A</h1>
+        <p>Your personal guide to healthy meals</p>
+    </div>
+
+    <!-- Form Section -->
+    <div class="form-section">
+        <div id="question-form">
+            <input type="text" id="question-input" placeholder="Ask your question here..." autocomplete="off">
+            <button id="submit-question">Ask</button>
+        </div>
+        <!-- Error Message -->
+        <p id="error-message" class="message"></p>
+    </div>
+
+    <!-- Answer Section -->
+    <div id="answer-section">
+        <h2>Your Question:</h2>
+        <p id="display-question"></p>
+        <h2>Answer:</h2>
+        <p id="display-answer"></p>
+
+        <!-- Feedback Section -->
+        <div id="feedback-section">
+            <button id="feedback-positive">👍 Yes</button>
+            <button id="feedback-negative">👎 No</button>
+        </div>
+        <p id="feedback-message" class="success-message"></p>
+    </div>
+</div>
+
+<!-- Scripts -->
+<script>
+    // Function to submit the question
+    function submitQuestion() {
+        const questionInput = document.getElementById('question-input');
+        const submitButton = document.getElementById('submit-question');
+        const question = questionInput.value.trim();
+        const errorMessage = document.getElementById('error-message');
+        const answerSection = document.getElementById('answer-section');
+        const feedbackMessage = document.getElementById('feedback-message');
+
+        if (!question) {
+            errorMessage.textContent = 'Please enter a question.';
+            return;
+        }
+
+        // Reset previous messages and hide answer section
+        errorMessage.textContent = '';
+        feedbackMessage.textContent = '';
+        answerSection.style.display = 'none';
+
+        // Disable input and button, show loading state
+        questionInput.disabled = true;
+        submitButton.disabled = true;
+        submitButton.textContent = 'Loading...';
+
+        // Show loading spinner
+        const spinner = document.createElement('div');
+        spinner.className = 'spinner';
+        submitButton.parentNode.replaceChild(spinner, submitButton);
+
+        // Send question to the backend
+        fetch('/api/question', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ question: question })
+        })
+        .then(response => response.json())
+        .then(data => {
+            // Restore input and button
+            questionInput.disabled = false;
+
+            // Replace spinner with submit button
+            spinner.parentNode.replaceChild(submitButton, spinner);
+            submitButton.disabled = false;
+            submitButton.textContent = 'Ask';
+
+            if (data.error) {
+                errorMessage.textContent = data.error;
+            } else {
+                // Display question and answer
+                document.getElementById('display-question').textContent = data.question;
+                document.getElementById('display-answer').textContent = data.answer;
+                answerSection.style.display = 'block';
+
+                // Store conversation_id for feedback
+                window.conversation_id = data.conversation_id;
+            }
+        })
+        .catch(error => {
+            // Restore input and button
+            questionInput.disabled = false;
+            spinner.parentNode.replaceChild(submitButton, spinner);
+            submitButton.disabled = false;
+            submitButton.textContent = 'Ask';
+
+            errorMessage.textContent = 'An error occurred: ' + error.message;
+        });
+
+        // Clear the input field
+        questionInput.value = '';
+    }
+
+    // Event listeners for question submission
+    document.getElementById('submit-question').addEventListener('click', submitQuestion);
+    document.getElementById('question-input').addEventListener('keyup', function (event) {
+        if (event.key === 'Enter') {
+            submitQuestion();
+        }
+    });
+
+    // Function to send feedback
+    function sendFeedback(feedback) {
+        const feedbackMessage = document.getElementById('feedback-message');
+        if (!window.conversation_id) {
+            feedbackMessage.textContent = 'No conversation ID found.';
+            return;
+        }
+
+        fetch('/api/feedback', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ conversation_id: window.conversation_id, feedback: feedback })
+        })
+        .then(response => response.json())
+        .then(data => {
+            feedbackMessage.textContent = data.message;
+        })
+        .catch(error => {
+            feedbackMessage.textContent = 'An error occurred: ' + error.message;
+        });
+    }
+
+    // Feedback button event listeners
+    document.getElementById('feedback-positive').addEventListener('click', () => sendFeedback(1));
+    document.getElementById('feedback-negative').addEventListener('click', () => sendFeedback(-1));
+</script>
+
+</body>
+</html>

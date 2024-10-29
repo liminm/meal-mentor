@@ -1,0 +1,56 @@
+version: '3.8'
+
+services:
+  elasticsearch:
+    image: docker.elastic.co/elasticsearch/elasticsearch:8.4.3
+    container_name: elasticsearch
+    environment:
+      - discovery.type=single-node
+      - xpack.security.enabled=false
+    ports:
+      - "${ELASTIC_PORT:-9200}:9200"
+      - "9300:9300"
+    volumes:
+      - elasticsearch_data:/usr/share/elasticsearch/data
+
+  postgres:
+    image: postgres:14
+    container_name: postgres
+    environment:
+      POSTGRES_DB: ${POSTGRES_DB}
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+    ports:
+      - "${POSTGRES_PORT:-5432}:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+
+  grafana:
+    image: grafana/grafana:latest
+    container_name: grafana
+    ports:
+      - "3000:3000"
+    volumes:
+      - grafana_data:/var/lib/grafana
+    environment:
+      - GF_SECURITY_ADMIN_PASSWORD=${GRAFANA_ADMIN_PASSWORD:-admin}
+    depends_on:
+      - postgres
+
+  app:
+    build:
+        context: .
+        dockerfile: Dockerfile
+    container_name: meal_mentor_app
+#    environment:
+    ports:
+      - "${APP_PORT:-8000}:8000"
+    depends_on:
+      - postgres
+#      - elasticsearch
+
+volumes:
+  elasticsearch_data:
+  postgres_data:
+  grafana_data:
